@@ -56,21 +56,39 @@ export const addQuestion = async (req, res) => {
 
 
 //update ques 
+// questionController.js
+
 export const updateQuestion = async (req, res) => {
-    try {
-        const updatedQ = await Question.findOneAndUpdate(
-            { _id: req.params.id, user: req.user.id },  // only user’s own
-            req.body,
-            { new: true }
-        );
-        if (!updatedQ) {
-            return res.status(404).json({ message: "Question not found" });
-        }
-        res.json(updatedQ);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+  try {
+    const question = await Question.findById(req.params.id);
+    if (!question) return res.status(404).json({ message: "Not found" });
+
+    // only toggle markForReview if no other data is passed
+    if (Object.keys(req.body).length === 0) {
+      question.markForReview = !question.markForReview;
+      await question.save();
+      return res.json({
+        message: "Toggled review status",
+        markForReview: question.markForReview,
+      });
     }
+
+    // otherwise allow normal field updates (if you want to support that)
+    question.questionName = req.body.questionName || question.questionName;
+    question.whatWentWrong = req.body.whatWentWrong || question.whatWentWrong;
+    question.whatLearnt = req.body.whatLearnt || question.whatLearnt;
+    question.importance = req.body.importance || question.importance;
+    question.topics = req.body.topics || question.topics;
+    question.platform = req.body.platform || question.platform;
+
+    await question.save();
+    res.json({ message: "Question updated", question });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
 };
+
 
 //delete ques
 export const deleteQuestion = async (req, res) => {
@@ -87,3 +105,5 @@ export const deleteQuestion = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+
