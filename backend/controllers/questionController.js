@@ -57,13 +57,12 @@ export const addQuestion = async (req, res) => {
 
 //update ques 
 // questionController.js
-
 export const updateQuestion = async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
     if (!question) return res.status(404).json({ message: "Not found" });
 
-    // only toggle markForReview if no other data is passed
+    // toggle-only update
     if (Object.keys(req.body).length === 0) {
       question.markForReview = !question.markForReview;
       await question.save();
@@ -73,13 +72,24 @@ export const updateQuestion = async (req, res) => {
       });
     }
 
-    // otherwise allow normal field updates (if you want to support that)
-    question.questionName = req.body.questionName || question.questionName;
-    question.whatWentWrong = req.body.whatWentWrong || question.whatWentWrong;
-    question.whatLearnt = req.body.whatLearnt || question.whatLearnt;
-    question.importance = req.body.importance || question.importance;
-    question.topics = req.body.topics || question.topics;
-    question.platform = req.body.platform || question.platform;
+    // proper updates
+    const {
+      questionName,
+      whatWentWrong,
+      whatLearnt,
+      importance,
+      topics,
+      platform,
+      markForReview,
+    } = req.body;
+
+    if (questionName !== undefined) question.questionName = questionName;
+    if (whatWentWrong !== undefined) question.whatWentWrong = whatWentWrong;
+    if (whatLearnt !== undefined) question.whatLearnt = whatLearnt;
+    if (importance !== undefined) question.importance = importance;
+    if (topics !== undefined) question.topics = topics;
+    if (platform !== undefined) question.platform = platform;
+    if (markForReview !== undefined) question.markForReview = markForReview; // ✅ FIX HERE
 
     await question.save();
     res.json({ message: "Question updated", question });
@@ -88,6 +98,7 @@ export const updateQuestion = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 
 //delete ques

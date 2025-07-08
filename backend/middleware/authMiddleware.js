@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
 export const protect= async (req,res,next) => {
+      console.log("REQ HEADERS 🧾 =>", req.headers); // <--- ADD THIS
+
     let token=req.headers.authorization?.split(" ")[1]  //header me store rehta token i.e "bearer token" so is se bearer hat jayega
     if(!token){
 return res.status(401).json({message:"Not authorised,no token"})
