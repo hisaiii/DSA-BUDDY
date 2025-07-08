@@ -60,7 +60,7 @@ const QuestionsTable = ({
               {hasActiveFilters && " (filtered)"}
             </p>
           </div>
-            <div className="overflow-hidden rounded-xl shadow-md border border-[#444]">
+            <div className=" shadow-md border border-[#444]">
 
           <table className="w-full border-collapse text-base rounded-xl overflow-visible bg-[#252525]">
             <thead>

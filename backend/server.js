@@ -1,43 +1,45 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import path from "path"; // ⬅️ Yeh import zaroori hai for __dirname
+import path from "path";
+import { fileURLToPath } from "url";
 import connectDB from "./config/db.js";
-import authRoutes from './routes/authRoutes.js';
+import authRoutes from "./routes/authRoutes.js";
 import questionRoutes from "./routes/questionRoutes.js";
 
-// env setup
 dotenv.config();
 
-// DB connect
-connectDB();
-
-// app init
 const app = express();
-const __dirname = path.resolve(); // ✅ Corrected spelling
 
-// middlewares
+// Fix __dirname for ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Middleware
 app.use(cors({
-  origin: "https://personal-finance-tracker-8tdm.onrender.com", // ✅ frontend link
-  credentials: true, // optional: for cookies/sessions if needed
+  origin: "http://localhost:8000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 app.use(express.json());
 
-// routes
+// Connect to database
+connectDB();
+
+const PORT =  8000;
+
+// API routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/questions", questionRoutes);
 
-// static frontend serve (React/Vite build folder)
-app.use(express.static(path.join(__dirname, "frontend/dist")));
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-// handle all non-api routes (SPA fallback)
+// Handle client-side routing (SPA)
 app.get(/^(?!\/api).*/, (req, res) => {
-  // This regex matches all routes that don't start with '/api'
-  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
-})
+  res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+});
 
-// start server
-const PORT = process.env.PORT || 5000;
+// Start server
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });

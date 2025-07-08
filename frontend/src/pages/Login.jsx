@@ -20,7 +20,7 @@ const { updateUser } = useContext(UserContext);
 
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/v1/auth/login", {
+      const response = await axios.post("http://localhost:8000/api/v1/auth/login", {
         email,
         password
       });

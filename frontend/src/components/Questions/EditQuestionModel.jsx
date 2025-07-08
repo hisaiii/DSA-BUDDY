@@ -33,7 +33,7 @@ const EditQuestionModal = ({ question, onClose, onQuestionUpdated }) => {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        `http://localhost:5000/api/v1/questions/${question._id}`,
+        `http://localhost:8000/api/v1/questions/${question._id}`,
         {
           ...form,
           topics: form.topics.split(",").map((t) => t.trim()),
