@@ -31,9 +31,10 @@ app.use("/api/v1/questions", questionRoutes);
 app.use(express.static(path.join(__dirname, "frontend/dist")));
 
 // handle all non-api routes (SPA fallback)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
+app.get(/^(?!\/api).*/, (req, res) => {
+  // This regex matches all routes that don't start with '/api'
+  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
+})
 
 // start server
 const PORT = process.env.PORT || 5000;
