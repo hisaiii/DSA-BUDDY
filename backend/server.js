@@ -17,7 +17,7 @@ const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:8000",
+  origin: "https://dsa-buddy.onrender.com",
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 app.use(express.json());

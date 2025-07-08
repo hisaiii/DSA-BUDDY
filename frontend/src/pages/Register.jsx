@@ -18,7 +18,7 @@ const Register = () => {
     }
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:8000/api/v1/auth/register", {
+      await axios.post("https://dsa-buddy.onrender.com/api/v1/auth/register", {
   fullName,
   email,
   password
@@ -26,7 +26,7 @@ const Register = () => {
 
 toast.success("Registration successful! Logging you in...");
 
-const loginRes = await axios.post("http://localhost:8000/api/v1/auth/login", {
+const loginRes = await axios.post("https://dsa-buddy.onrender.com/api/v1/auth/login", {
   email,
   password
 });

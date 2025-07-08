@@ -16,7 +16,7 @@ export const useUserAuth = () => {
       try {
         const token = localStorage.getItem("token"); 
         const response = await axios.get(
-          "http://localhost:8000/api/v1/auth/getUser",
+          "https://dsa-buddy.onrender.com/api/v1/auth/getUser",
           {
             headers: {
               Authorization: `Bearer ${token}`,
