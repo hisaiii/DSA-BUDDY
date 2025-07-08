@@ -75,6 +75,7 @@ export const updateQuestion = async (req, res) => {
     // proper updates
     const {
       questionName,
+      questionLink,
       whatWentWrong,
       whatLearnt,
       importance,
@@ -84,6 +85,7 @@ export const updateQuestion = async (req, res) => {
     } = req.body;
 
     if (questionName !== undefined) question.questionName = questionName;
+    if (questionLink !== undefined) question.questionLink = questionLink;
     if (whatWentWrong !== undefined) question.whatWentWrong = whatWentWrong;
     if (whatLearnt !== undefined) question.whatLearnt = whatLearnt;
     if (importance !== undefined) question.importance = importance;

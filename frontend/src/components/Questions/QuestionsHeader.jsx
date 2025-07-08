@@ -24,7 +24,7 @@ const QuestionsHeader = ({ onAddQuestion }) => {
         {/* Logout Button */}
         <button
           onClick={handleLogout}
-          className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition"
+          className="p-2 bg-red-600 cursor-pointer text-white rounded-full hover:bg-red-700 transition"
           title="Logout"
         >
           <FaSignOutAlt size={16} />
@@ -34,7 +34,7 @@ const QuestionsHeader = ({ onAddQuestion }) => {
         {onAddQuestion && (
           <button
             onClick={onAddQuestion}
-            className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition"
+            className="bg-blue-500 cursor-pointer text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition"
           >
             + Add Question
           </button>

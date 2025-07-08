@@ -111,14 +111,14 @@ const handleSubmit = async () => {
         <div className="flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+            className="px-4 py-2 cursor-pointer bg-gray-600 text-white rounded hover:bg-gray-700"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="px-4 py-2 bg-blue-500 cursor-pointer text-white rounded hover:bg-blue-600"
           >
             {loading ? "Adding..." : "Add"}
           </button>

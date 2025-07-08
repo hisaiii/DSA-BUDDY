@@ -95,7 +95,7 @@ const EditQuestionModal = ({ question, onClose, onQuestionUpdated }) => {
             name="importance"
             value={form.importance}
             onChange={handleChange}
-            className="w-full p-2 bg-[#1F1F1F] border border-gray-600 text-white rounded"
+            className="w-full p-2 cursor-pointer bg-[#1F1F1F] border border-gray-600 text-white rounded"
           >
             <option value="basic">basic</option>
             <option value="important">important</option>
@@ -106,14 +106,14 @@ const EditQuestionModal = ({ question, onClose, onQuestionUpdated }) => {
         <div className="flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+            className="px-4 py-2 cursor-pointer bg-gray-600 text-white rounded hover:bg-gray-700"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+            className="px-4 py-2 cursor-pointer bg-green-600 text-white rounded hover:bg-green-700"
           >
             {loading ? "Updating..." : "Update"}
           </button>
