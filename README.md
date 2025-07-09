@@ -2,7 +2,7 @@
 
 **DSA Buddy** is a personal DSA question tracker web app designed to help you track, review, and improve your problem-solving skills. Built with the MERN stack (MongoDB, Express.js, React.js, Node.js), this app enables users to log their questions, categorize them by topics/platforms, mark for revision, and analyze mistakes/lessons learned.
 
-> 📍 Live Demo: [https://dsa-buddy.onrender.com](https://dsa-buddy.onrender.com)
+> 📍 Live Demo: [https://dsa-buddy-1je4.onrender.com](https://dsa-buddy-1je4.onrender.com)
 
 ---
 

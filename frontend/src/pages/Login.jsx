@@ -20,7 +20,7 @@ const { updateUser } = useContext(UserContext);
 
     setIsLoading(true);
     try {
-      const response = await axios.post("https://dsa-buddy.onrender.com/api/v1/auth/login", {
+      const response = await axios.post("https://dsa-buddy-1je4.onrender.com/api/v1/auth/login", {
         email,
         password
       });

@@ -15,7 +15,7 @@ const fetchAllQuestions = async () => {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `https://dsa-buddy.onrender.com/api/v1/questions/get`,
+      `https://dsa-buddy-1je4.onrender.com/api/v1/questions/get`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -49,7 +49,7 @@ const fetchAllQuestions = async () => {
       setAllQuestions(updatedAllQuestions);
 
       await axios.put(
-        `https://dsa-buddy.onrender.com/api/v1/questions/${id}`,
+        `https://dsa-buddy-1je4.onrender.com/api/v1/questions/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -64,7 +64,7 @@ const fetchAllQuestions = async () => {
     if (!window.confirm("Are you sure you want to delete this question?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`https://dsa-buddy.onrender.com/api/v1/questions/${id}`, {
+      await axios.delete(`https://dsa-buddy-1je4.onrender.com/api/v1/questions/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       

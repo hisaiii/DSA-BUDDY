@@ -33,7 +33,7 @@ const EditQuestionModal = ({ question, onClose, onQuestionUpdated }) => {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        `https://dsa-buddy.onrender.com/api/v1/questions/${question._id}`,
+        `https://dsa-buddy-1je4.onrender.com/api/v1/questions/${question._id}`,
         {
           ...form,
           topics: form.topics.split(",").map((t) => t.trim()),

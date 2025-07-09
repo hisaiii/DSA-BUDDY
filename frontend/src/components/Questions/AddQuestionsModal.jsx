@@ -36,7 +36,7 @@ const handleSubmit = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.post(
-      "https://dsa-buddy.onrender.com/api/v1/questions/add",
+      "https://dsa-buddy-1je4.onrender.com/api/v1/questions/add",
       {
         ...form,
         topics: form.topics.split(",").map((t) => t.trim()),
