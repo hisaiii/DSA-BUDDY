@@ -104,10 +104,10 @@ const QuestionsTable = ({
                       {q.platform}
                     </span>
                   </td>
-                  <td className="p-4 border-b border-[#3A3A3A] text-white">
+                  <td className="p-4 border-b border-[#3A3A3A] text-white whitespace-pre-line">
                     {q.whatWentWrong}
                   </td>
-                  <td className="p-4 border-b border-[#3A3A3A] text-white">
+                  <td className="p-4 border-b border-[#3A3A3A] text-white whitespace-pre-line">
                     {q.whatLearnt}
                   </td>
                   <td className="p-4 border-b border-[#3A3A3A]">
