@@ -1,4 +1,3 @@
-// src/components/Questions/EditQuestionModal.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -58,26 +57,39 @@ const EditQuestionModal = ({ question, onClose, onQuestionUpdated }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center">
-      <div className="bg-[#2A2A2A] p-6 rounded-lg w-[500px] max-h-[90vh]">
+      <div className="bg-[#2A2A2A] p-6 rounded-lg w-[500px] max-h-[90vh] overflow-y-auto">
         <h2 className="text-xl font-bold mb-4 text-white">Edit Question</h2>
 
-        {[{ name: "questionName", placeholder: "Question Name" },
+        {[
+          { name: "questionName", placeholder: "Question Name" },
           { name: "questionLink", placeholder: "Question Link" },
           { name: "whatWentWrong", placeholder: "What Went Wrong" },
           { name: "whatLearnt", placeholder: "What You Learnt" },
           { name: "topics", placeholder: "Topics (comma separated)" },
-          { name: "platform", placeholder: "Platform" }
-        ].map(({ name, placeholder }) => (
-          <input
-            key={name}
-            type="text"
-            name={name}
-            placeholder={placeholder}
-            value={form[name]}
-            onChange={handleChange}
-            className="w-full mb-3 p-2 rounded bg-[#1F1F1F] border border-gray-600 text-white"
-          />
-        ))}
+          { name: "platform", placeholder: "Platform" },
+        ].map(({ name, placeholder }) =>
+          ["whatWentWrong", "whatLearnt"].includes(name) ? (
+            <textarea
+              key={name}
+              name={name}
+              placeholder={placeholder}
+              value={form[name]}
+              onChange={handleChange}
+              rows={4}
+              className="w-full mb-3 p-2 rounded bg-[#1F1F1F] border border-gray-600 text-white resize-y"
+            />
+          ) : (
+            <input
+              key={name}
+              type="text"
+              name={name}
+              placeholder={placeholder}
+              value={form[name]}
+              onChange={handleChange}
+              className="w-full mb-3 p-2 rounded bg-[#1F1F1F] border border-gray-600 text-white"
+            />
+          )
+        )}
 
         <div className="mb-3">
           <label className="text-white mr-3">Mark for Review:</label>
