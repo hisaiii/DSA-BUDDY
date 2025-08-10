@@ -85,3 +85,25 @@ export const getUserInfo = async (req, res) => {
             .json({ message: "Error registering user", error: err.message })
     } 
 }
+
+export const tempResetPassword = async (req, res) => {
+  try {
+    const email = "sai@g.com"; // tera email
+    const newPassword = "sai1234"; // naya password
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    const result = await User.updateOne(
+      { email },
+      { password: hashedPassword }
+    );
+
+    if (result.modifiedCount > 0) {
+      res.send(`✅ Password reset ho gaya for ${email}. Naya password: ${newPassword}`);
+    } else {
+      res.status(404).send("❌ User not found.");
+    }
+  } catch (err) {
+    res.status(500).send("Error: " + err.message);
+  }
+};
