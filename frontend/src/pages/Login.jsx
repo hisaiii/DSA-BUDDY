@@ -50,14 +50,14 @@ const { updateUser } = useContext(UserContext);
     navigate("/register");
   };
 return (
-  <div className="min-h-screen flex items-center justify-center bg-gray-100">
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
     
-    <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+    <div className="w-full max-w-md backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-xl p-8">
 
       {/* Heading */}
       <div className="text-center mb-6">
-        <h2 className="text-3xl font-semibold text-gray-800">Welcome Back</h2>
-        <p className="text-gray-500 text-sm mt-1">
+        <h2 className="text-3xl font-semibold text-white">Welcome Back</h2>
+        <p className="text-gray-300 text-sm mt-1">
           Login to continue your DSA journey
         </p>
       </div>
@@ -66,22 +66,22 @@ return (
       <form onSubmit={handleSubmit} className="space-y-5">
 
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Email</label>
+          <label className="block text-sm text-gray-300 mb-1">Email</label>
           <input
             type="email"
             placeholder="Enter your email"
-            className="w-full border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full bg-white/10 border border-white/20 text-white placeholder-gray-400 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Password</label>
+          <label className="block text-sm text-gray-300 mb-1">Password</label>
           <input
             type="password"
             placeholder="Enter your password"
-            className="w-full border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full bg-white/10 border border-white/20 text-white placeholder-gray-400 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -90,18 +90,18 @@ return (
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition duration-200"
+          className="w-full bg-blue-500/90 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition duration-200 backdrop-blur-md"
         >
           {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>
 
       {/* Footer */}
-      <p className="text-sm text-center text-gray-500 mt-6">
+      <p className="text-sm text-center text-gray-300 mt-6">
         Don’t have an account?{" "}
         <span
           onClick={handleRegisterNavigation}
-          className="text-blue-500 cursor-pointer font-medium hover:underline"
+          className="text-blue-400 cursor-pointer font-medium hover:underline"
         >
           Register
         </span>
