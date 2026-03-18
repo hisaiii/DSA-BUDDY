@@ -51,44 +51,57 @@ const { updateUser } = useContext(UserContext);
   };
 return (
   <div className="min-h-screen flex items-center justify-center bg-gray-100">
-    <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    
+    <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
 
-      <h2 className="text-2xl font-semibold text-center mb-6">
-        Login to DSA Buddy
-      </h2>
+      {/* Heading */}
+      <div className="text-center mb-6">
+        <h2 className="text-3xl font-semibold text-gray-800">Welcome Back</h2>
+        <p className="text-gray-500 text-sm mt-1">
+          Login to continue your DSA journey
+        </p>
+      </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-5">
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full border p-3 rounded-md outline-none focus:ring-2 focus:ring-blue-400"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div>
+          <label className="block text-sm text-gray-600 mb-1">Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full border p-3 rounded-md outline-none focus:ring-2 focus:ring-blue-400"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div>
+          <label className="block text-sm text-gray-600 mb-1">Password</label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            className="w-full border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition"
+          className="w-full bg-blue-500 text-white py-3 rounded-lg font-medium hover:bg-blue-600 transition duration-200"
         >
           {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>
 
-      <p className="text-sm text-center mt-4">
+      {/* Footer */}
+      <p className="text-sm text-center text-gray-500 mt-6">
         Don’t have an account?{" "}
         <span
           onClick={handleRegisterNavigation}
-          className="text-blue-500 cursor-pointer"
+          className="text-blue-500 cursor-pointer font-medium hover:underline"
         >
           Register
         </span>
